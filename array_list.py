@@ -11,10 +11,10 @@ class NotOrdered(Exception):
     pass
 
 class ArrayList:
-    def __init__(self, size, capacity=0):
-        self.size = 6
-        self.capacity = 6
-        self.arr = [1,2,3,4,5]
+    def __init__(self, capacity ,size=0):
+        self.size = 0
+        self.capacity = capacity
+        self.arr = [0]*self.capacity
 
     #Time complexity: O(n) - linear time in size of list
     def __str__(self):
@@ -50,9 +50,11 @@ class ArrayList:
 
     #Time complexity: O(1) - constant time
     def append(self, value):
+        if self.arr == []:
+            self.arr = [0]
         if self.size == self.capacity:
             arr_lis.resize()
-        self.arr[self.size-1] = value
+        self.arr[self.size] = value
         self.size +=1
 
     #Time complexity: O(1) - constant time
@@ -74,21 +76,21 @@ class ArrayList:
     #Time complexity: O(n) - linear time in size of list
     def resize(self):
         self.capacity *=2
-        temp_arry = [0] * self.capacity
-        for i in range(0, self.size-1):
-            temp_arry[i] = self.arr[i]
-        self.arr = temp_arry
-        return self.arr
+        temp_array = [0] * self.capacity
+        for i in range(0, self.size):
+            temp_array[i] = self.arr[i]
+        arr_lis.arr = temp_array
+
 
 
     #Time complexity: O(n) - linear time in size of list
     def remove_at(self, index):
-        self.arr = []
+        pass
 
     #Time complexity: O(1) - constant time
     def clear(self):
-        # TODO: remove 'pass' and implement functionality
-        pass
+        self.arr = []
+        self.size = 0
 
     #Time complexity: O(n) - linear time in size of list
     #Time complexity: O(log n) - logarithmic time in size of list
@@ -100,7 +102,7 @@ class ArrayList:
     #Time complexity: O(log n) - logarithmic time in size of list
 
     def find(self, value):
-        if arr_lis.is_list_orderd() == True:
+        if arr_lis.is_list_orderd() == False:
             for i in range(0, self.size):
                 if self.arr[i] == value:
                     return i
@@ -141,10 +143,20 @@ if __name__ == "__main__":
     # Do not add them outside this if statement
     # and make sure they are at this indent level
 
-    arr_lis = ArrayList(10)
+    arr_lis = ArrayList(1)
 
     arr_lis.append(2)
-    print(arr_lis.find(2))
+    print(arr_lis)
+    arr_lis.append(3)
+    print(arr_lis)
+    arr_lis.append(4)
+    print(arr_lis)
+    arr_lis.append(5)
+    print(arr_lis)
+    arr_lis.clear()
+    arr_lis.append(7)
+    print(arr_lis)
+
 
 
 
