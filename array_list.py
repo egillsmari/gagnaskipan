@@ -173,6 +173,8 @@ class ArrayList:
         '''Finds the middle of the list recursively and finds of middle of the list is bigger or smaller then
             the target. '''
         mid = (start + end) // 2
+        if start == end:
+            raise NotFound()
         if self.arr[mid] < target:
             return self.binary_search(mid + 1, end, target)
         elif self.arr[mid] > target:
@@ -203,12 +205,12 @@ if __name__ == "__main__":
     #14, 21, 17, 80, 99, 13, 55, 91
     arr_lis = ArrayList()
     print(str(arr_lis))
-    arr_lis.insert_ordered(15)
-    arr_lis.insert_ordered(25)
-    arr_lis.insert_ordered(13)
-    arr_lis.insert_ordered(11)
-    arr_lis.insert_ordered(13)
+    lis = [10, 11, 12, 13, 13, 13, 14, 15, 15, 16, 18, 18, 18, 19, 21, 21, 22, 22, 23, 23, 28, 29, 29, 29, 29, 30]
+    for i in lis:
+        arr_lis.insert_ordered(i)
+
     print(arr_lis)
+    print(arr_lis.find(26))
 
 
 
