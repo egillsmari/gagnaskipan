@@ -11,7 +11,7 @@ class NotOrdered(Exception):
     pass
 
 class ArrayList:
-    def __init__(self, capacity ,size=0):
+    def __init__(self, capacity = 4 ,size=0):
         self.size = 0
         self.capacity = capacity
         self.arr = [0]*self.capacity
@@ -19,7 +19,6 @@ class ArrayList:
     #Time complexity: O(n) - linear time in size of list
     def __str__(self):
         return_string = ""
-
         for i in range(0, self.size):
             if i == self.size-1:
                 return_string += str(self.arr[i])
@@ -37,7 +36,7 @@ class ArrayList:
 
     #Time complexity: O(n) - linear time in size of list
     def insert(self, value, index):
-        if index > self.size-1 or index < 0:
+        if index > self.size or index < 0:
             raise IndexOutOfBounds()
         if self.size == self.capacity:
             arr_lis.resize()
@@ -79,17 +78,22 @@ class ArrayList:
         temp_array = [0] * self.capacity
         for i in range(0, self.size):
             temp_array[i] = self.arr[i]
-        arr_lis.arr = temp_array
+        self.arr = temp_array
 
 
 
     #Time complexity: O(n) - linear time in size of list
     def remove_at(self, index):
-        pass
+        for i in range(index, self.size):
+            self.arr[i] = self.arr[i+1]
+        self.size -= 1
+
+
 
     #Time complexity: O(1) - constant time
     def clear(self):
-        self.arr = []
+        temp_array = [0] * self.capacity
+        self.arr = temp_array
         self.size = 0
 
     #Time complexity: O(n) - linear time in size of list
@@ -101,11 +105,16 @@ class ArrayList:
     #Time complexity: O(n) - linear time in size of list
     #Time complexity: O(log n) - logarithmic time in size of list
 
+    def not_orderd_find(self, array, value):
+        if array[0] == value:
+            return 0
+        else:
+            return 1+ arr_lis.not_orderd_find(array[1:], value)
+
     def find(self, value):
+        #raise notfound
         if arr_lis.is_list_orderd() == False:
-            for i in range(0, self.size):
-                if self.arr[i] == value:
-                    return i
+            return arr_lis.not_orderd_find(self.arr, value)
         else:
             return arr_lis.binary_search(0, self.size, value)
 
@@ -116,7 +125,6 @@ class ArrayList:
             else:
                 return False
         return True
-
 
 
     def binary_search(self, start, end, target):
@@ -133,8 +141,9 @@ class ArrayList:
     #Time complexity: O(log n) - logarithmic time in size of list
 
     def remove_value(self, value):
-        # TODO: remove 'pass' and implement functionality
-        pass
+        for i in range(0, self.size):
+            if value == self.arr[i]:
+                arr_lis.remove_at(i)
 
 
 if __name__ == "__main__":
@@ -143,19 +152,20 @@ if __name__ == "__main__":
     # Do not add them outside this if statement
     # and make sure they are at this indent level
 
-    arr_lis = ArrayList(1)
+    arr_lis = ArrayList()
 
     arr_lis.append(2)
     print(arr_lis)
     arr_lis.append(3)
     print(arr_lis)
-    arr_lis.append(4)
-    print(arr_lis)
     arr_lis.append(5)
     print(arr_lis)
-    arr_lis.clear()
-    arr_lis.append(7)
+    arr_lis.append(1)
+    arr_lis.append(14)
     print(arr_lis)
+    arr_lis.remove_value(2)
+    print(arr_lis)
+
 
 
 
