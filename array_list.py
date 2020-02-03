@@ -58,18 +58,26 @@ class ArrayList:
 
     #Time complexity: O(1) - constant time
     def set_at(self, value, index):
+        if index >= self.size or index < 0:
+            raise IndexOutOfBounds()
         self.arr[index] = value
 
     #Time complexity: O(1) - constant time
     def get_first(self):
+        if self.arr == []:
+            raise Empty()
         return self.arr[0]
 
     #Time complexity: O(1) - constant time
     def get_at(self, index):
+        if index >= self.size or index < 0:
+            raise IndexOutOfBounds()
         return self.arr[index]
 
     #Time complexity: O(1) - constant time
     def get_last(self):
+        if self.arr == []:
+            raise Empty()
         return self.arr[self.size-1]
 
     #Time complexity: O(n) - linear time in size of list
@@ -84,6 +92,8 @@ class ArrayList:
 
     #Time complexity: O(n) - linear time in size of list
     def remove_at(self, index):
+        if index >= self.size or index < 0:
+            raise IndexOutOfBounds()
         for i in range(index, self.size):
             self.arr[i] = self.arr[i+1]
         self.size -= 1
@@ -92,8 +102,7 @@ class ArrayList:
 
     #Time complexity: O(1) - constant time
     def clear(self):
-        temp_array = [0] * self.capacity
-        self.arr = temp_array
+
         self.size = 0
 
     #Time complexity: O(n) - linear time in size of list
@@ -161,10 +170,10 @@ if __name__ == "__main__":
     arr_lis.append(5)
     print(arr_lis)
     arr_lis.append(1)
-    arr_lis.append(14)
     print(arr_lis)
-    arr_lis.remove_value(2)
+    arr_lis.insert(6, 4)
     print(arr_lis)
+
 
 
 
