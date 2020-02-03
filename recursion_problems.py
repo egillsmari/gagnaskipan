@@ -1,12 +1,28 @@
 
 def modulus(a, b):  # ONLY NEEDS TO WORK FOR POSITIVE INTEGERS
-    #TODO: remove 'pass' and implement functionality
-    pass
+    if a == 0:
+        return 0
+    elif a-b < 0:
+        return a
+    else:
+        return modulus(a-b, b)
 
 
 def how_many(lis1, lis2):
-    #TODO: remove 'pass' and implement functionality
-    pass
+    # TODO: remove 'pass' and implement functionality
+    if lis2 == []:
+        return 0
+    value = count_instances(lis1, lis2[0])
+    return value + how_many(lis1, lis2[1:])
+
+
+def count_instances(list, value):
+    if len(list) == 0:
+        return 0
+    ret_val = count_instances(list[1:], value)
+    if list[0] == value:
+        ret_val += 1
+    return ret_val
 
 
 # FEEL FREE TO EDIT THE TESTS AND MAKE THEM BETTER

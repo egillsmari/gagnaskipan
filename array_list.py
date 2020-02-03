@@ -15,6 +15,7 @@ class ArrayList:
         self.size = 0
         self.capacity = capacity
         self.arr = [0]*self.capacity
+        self.ordered = True
 
     #Time complexity: O(n) - linear time in size of list
     def __str__(self):
@@ -125,7 +126,7 @@ class ArrayList:
     def insert_ordered(self, value):
         '''Finds the position where the value fits in the ordered list by iterating checking the values next i. When the
             correct location is found we re-use methods to put the value in its place. We used break because there is no
-            point in continuing looping afer placing the value. '''
+            point in continuing looping after placing the value. '''
         if self.size == 0:
             self.append(value)
         if self.is_list_orderd() == False:
@@ -165,7 +166,9 @@ class ArrayList:
             if self.arr[i] <= self.arr[i+1]:
                 pass
             else:
+                self.ordered = False
                 return False
+        self.ordered = True
         return True
 
     # Time complexity: O(log n) - logarithmic time in size of list
