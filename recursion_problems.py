@@ -9,7 +9,6 @@ def modulus(a, b):  # ONLY NEEDS TO WORK FOR POSITIVE INTEGERS
 
 
 def how_many(lis1, lis2):
-    # TODO: remove 'pass' and implement functionality
     if lis2 == []:
         return 0
     value = count_instances(lis1, lis2[0])

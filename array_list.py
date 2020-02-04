@@ -16,6 +16,8 @@ class ArrayList:
         self.capacity = capacity
         self.arr = [0]*self.capacity
         self.ordered = True
+        # We dont change self.ordered to False until we NEED to check if it is ordered. We saw no use to always change the boolean
+        # until we really needed to know if it was ordered.
 
     #Time complexity: O(n) - linear time in size of list
     def __str__(self):
@@ -208,12 +210,7 @@ if __name__ == "__main__":
     #14, 21, 17, 80, 99, 13, 55, 91
     arr_lis = ArrayList()
     print(str(arr_lis))
-    lis = [10, 11, 12, 13, 13, 13, 14, 15, 15, 16, 18, 18, 18, 19, 21, 21, 22, 22, 23, 23, 28, 29, 29, 29, 29, 30]
-    for i in lis:
-        arr_lis.insert_ordered(i)
 
-    print(arr_lis)
-    print(arr_lis.find(26))
 
 
 
